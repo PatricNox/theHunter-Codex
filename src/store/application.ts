@@ -7,18 +7,31 @@ import {
 } from "vuex-module-decorators";
 
 import store from "@/store";
-import { User } from "@/types/application";
+import { Map } from "@/types/application";
+import { applicationApi } from "@/api";
 
 @Module({ dynamic: true, store, name: "authentication", namespaced: true })
 export default class ApplicationStore extends VuexModule {
-  authenticatedUser: User | null = null;
-  userToken: string | null = localStorage.getItem("userToken");
+  mapList!: Map[];
+
+  get maps(): Map[] {
+    return this.mapList;
+  }
 
   @Mutation
-  setUserToken(token: string | null): void {
-    this.userToken = token;
-    if (token) localStorage.setItem("userToken", token);
-    else localStorage.removeItem("userToken");
+  setMapList(maps: Map[] ): void {
+    this.mapList = maps;
+  }
+
+  @Action
+  async init(): Promise<void> {
+    return this.loadApp();
+  }
+
+  @Action
+  async loadApp(): Promise<void> {
+    await applicationApi.fetchMaps().then((maps: Map[]) => this.setMapList(maps));
+    return;
   }
 }
 

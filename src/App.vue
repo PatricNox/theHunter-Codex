@@ -1,6 +1,9 @@
 <template>
   <div id="app" class="w-screen h-screen">
     <router-view v-if="appIsReady" class="w-full overflow-auto" />
+    <div v-else>
+      <LoadingSymbol />
+    </div>
   </div>
 </template>
 
@@ -8,15 +11,19 @@
 import { Vue, Component } from "vue-property-decorator";
 import { Locale } from "@/i18n";
 import { ViewName } from "./router";
+import { application } from "@/store/application";
 
 @Component({
   components: {},
 })
 export default class App extends Vue {
-  appIsReady = true;
+  appIsReady = false;
 
   created() {
     this.setLocale();
+    application.init().then(() => {
+      this.appIsReady = true;
+    })
   }
 
   setLocale() {

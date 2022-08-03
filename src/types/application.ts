@@ -1,6 +1,5 @@
-export interface User {
+export interface Map {
   id: number;
-  email: string;
-  firstname: string;
-  lastname: string;
+  name: string;
+  mediaUrl: string;
 }

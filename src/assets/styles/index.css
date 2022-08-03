@@ -2,40 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-base-light {
-  background-color: rgba(0, 0, 0, 0.03);
+html,
+body {
+  margin: 0;
+  padding:0;
 }
 
-/*
- * Image with background pattern
- * Image is set to full witdh
- * Excessive height is filled with bg-color
- */
-.bg-pattern-blue {
-  background-size: cover;
+body {
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
   background-repeat: no-repeat;
-  /* Color picked from image */
-  background-color: #005595;
-}
-
-/*
- * Image with background pattern
- * Image is set to full witdh
- * Excessive height is filled with bg-color
- */
- .bg-pattern-white {
   background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/*
- * Image with background pattern
- * Image is set to full witdh
- * Excessive height is filled with bg-color
- */
- .bg-home {
-  background-size: cover;
-  background-repeat: space;
+  background-image: url('../images/bg.png')
 }
 
 @media print {

@@ -1,5 +1,5 @@
 import { Api } from "@/api/axios";
-import { User } from "@/types/application";
+import { Map } from "@/types/application";
 import { AxiosResponse } from "axios";
 export default class ApplicationApi extends Api {
   endpointUrl: string;
@@ -9,12 +9,12 @@ export default class ApplicationApi extends Api {
   }
 
   /**
-   * Get all users
-   * @returns {Promise<User[]>}
+   * Get all Maps
+   * @returns {Promise<Map[]>}
    */
-  public getUsers(): Promise<User[]> {
-    return this.get<User[]>(this.endpointUrl + "/users").then(
-      (response: AxiosResponse<User[]>) => {
+  public fetchMaps(): Promise<Map[]> {
+    return this.get<Map[]>(this.endpointUrl + "/maps").then(
+      (response: AxiosResponse<Map[]>) => {
         return response.data;
       },
     );
