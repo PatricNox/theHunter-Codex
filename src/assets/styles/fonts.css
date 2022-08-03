@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'Weblysleek-light';
+  src: url(~@/assets/fonts/weblysleekuil.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Weblysleek-semilight';
+  src: url(~@/assets/fonts/weblysleekuisl.ttf) format('truetype');
+}

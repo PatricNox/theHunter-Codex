@@ -1,0 +1,75 @@
+/* Bounce transition */
+.bounce-transition {
+  display: inline-block;
+}
+.bounce-enter {
+  animation: bounce-in .5s;
+}
+.bounce-leave {
+  animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+  overflow: hidden;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+/* Flip transition */
+.flip-enter-active {
+  transition: all .2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.flip-leave-active {
+  transition: all .25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.flip-enter, .flip-leave-to {
+  transform: scaleY(0) translateZ(0);
+  opacity: 0;
+}
+
+/* Lift element transition */
+.lift {
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transform-translate-x: 0;
+  --transform-translate-y: 0;
+  --transform-rotate: 0;
+  --transform-skew-x: 0;
+  --transform-skew-y: 0;
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+  transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+}
+
+.lift:hover {
+  --transform-translate-y: -0.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
