@@ -6,7 +6,6 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { authModule } from "@/store/auth";
 import { Locale } from "@/i18n";
 import { ViewName } from "./router";
 

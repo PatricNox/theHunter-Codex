@@ -10,7 +10,7 @@ import store from "@/store";
 import { User } from "@/types/application";
 
 @Module({ dynamic: true, store, name: "authentication", namespaced: true })
-export default class AuthStore extends VuexModule {
+export default class ApplicationStore extends VuexModule {
   authenticatedUser: User | null = null;
   userToken: string | null = localStorage.getItem("userToken");
 
@@ -20,12 +20,6 @@ export default class AuthStore extends VuexModule {
     if (token) localStorage.setItem("userToken", token);
     else localStorage.removeItem("userToken");
   }
-
-  @Action
-  async signOut() {
-    this.setUserToken(null);
-    this.setAuthenticatedUser(null);
-  }
 }
 
-export const authModule = getModule(AuthStore, store);
+export const application = getModule(ApplicationStore, store);

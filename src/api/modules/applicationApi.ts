@@ -1,4 +1,4 @@
-import { Api } from "@/axios";
+import { Api } from "@/api/axios";
 import { User } from "@/types/application";
 import { AxiosResponse } from "axios";
 export default class ApplicationApi extends Api {
