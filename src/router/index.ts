@@ -1,25 +1,26 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
+import Index from "@/views/Index.vue";
+import Map from "@/views/Map.vue";
 
 Vue.use(VueRouter);
 
 export enum ViewName {
   App = "App",
-  Dashboard = "Dashboard",
+  Map = "Map",
 }
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: ViewName.App,
-    component: Home,
+    component: Index,
     meta: { requiresAuth: true },
   },
   {
-    path: "/dashboard",
-    name: ViewName.Dashboard,
-    component: Home,
+    path: "/map/:id",
+    name: ViewName.Map,
+    component: Map,
     meta: { requiresAuth: true },
   },
 ];
