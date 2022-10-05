@@ -141,7 +141,7 @@ export default class MapDetail extends Vue {
     this.$router
       .push({
         path: this.$route.fullPath,
-        query: { animal: animal.id },
+        query: { animal: animal.id.toString() },
       })
       .catch(() => {
         return "";
@@ -153,7 +153,7 @@ export default class MapDetail extends Vue {
     this.$router
       .push({
         path: this.$route.fullPath,
-        query: { weapon: weapon.id },
+        query: { weapon: weapon.id.toString() },
       })
       .catch(() => {
         return "";
