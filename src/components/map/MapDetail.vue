@@ -15,9 +15,10 @@
                 font-extrabold
                 cursor-pointer
                 hover:bg-accent-orange
+                  hover:bg-opacity-50
               "
               :class="{
-                'bg-accent-orange': isSelectedAnimal(animal),
+                'bg-accent-orange bg-opacity-50': isSelectedAnimal(animal),
               }"
             >
               {{ animal.name }}
@@ -43,9 +44,10 @@
                   font-extrabold
                   cursor-pointer
                   hover:bg-accent-orange
+                  hover:bg-opacity-50
                 "
                 :class="{
-                  'bg-accent-orange': isSelectedWeapon(weapon),
+                  'bg-accent-orange bg-opacity-50': isSelectedWeapon(weapon),
                 }"
               >
                 {{ weapon.name }}
