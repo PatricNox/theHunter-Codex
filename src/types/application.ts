@@ -9,7 +9,7 @@ export interface Animal {
   name: string;
   trophy: string;
   class: number;
-  scents: Scent[];
+  callers: Caller[];
   maxDifficulty: number;
   maxWeight: string;
   ratings: AnimalRating;
@@ -39,7 +39,8 @@ export interface Ammunition {
   ammunitionNo: string;
 }
 
-export interface Scent {
+export interface Caller {
   id: number;
   name: string;
+  animals: Animal["id"][];
 }

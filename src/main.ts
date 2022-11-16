@@ -9,13 +9,11 @@ import i18n from "./i18n";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import Button from "@/components/common/Button.vue";
 import LoadingSymbol from "@/components/common/LoadingSymbol.vue";
 
 library.add(fas);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("LoadingSymbol", LoadingSymbol);
-Vue.component("Button", Button);
 Vue.config.productionTip = false;
 
 new Vue({

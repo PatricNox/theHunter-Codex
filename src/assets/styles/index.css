@@ -9,15 +9,13 @@ body {
 }
 
 body {
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
   background-image: url('../images/bg.png');
+  position: fixed;
   color: #fff;
+  padding: 0;
+  margin: 0;
 }
 
 @media print {

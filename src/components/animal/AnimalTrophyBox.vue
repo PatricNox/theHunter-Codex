@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-left">
     <div>
       <p>
         class:

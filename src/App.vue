@@ -1,11 +1,9 @@
 <template>
-  <div id="app" class="w-full min-h-screen pr-6">
-    <router-view v-if="appIsReady" class="w-full" />
-    <div v-else>
-      <LoadingSymbol
-        class="mt-12 w-3/4 h-32 left-0 right-0 text-accent-orange ml-64"
-        size="2xl"
-      />
+  <div id="app">
+    <router-view v-if="appIsReady" class="overflow-x-hidden" />
+    <div v-else class="w-screen text-center mt-12">
+      <LoadingSymbol class=" w-3/4 h-32 text-accent-orange" size="2xl" />
+      <p class="mt-4">Loading application data..</p>
     </div>
   </div>
 </template>

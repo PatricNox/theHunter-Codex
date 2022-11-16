@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <h2
       class="
         uppercase

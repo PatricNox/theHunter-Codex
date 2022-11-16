@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-12 h-full items-center">
-    <div class="flex justify-between">
-      <div class="w-1/3 pr-8">
+  <div>
+    <div class="flex flex-row">
+      <div class="flex-row w-1/3 pr-8">
         <MapDetailBox title="animals">
           <div
             v-for="animal in animals"
@@ -27,12 +27,13 @@
         </MapDetailBox>
         <MapDetailBox title="trophy info" class="mt-16 text-accent-orange">
           <AnimalTrophyBox v-if="animalSelected" :animal="animalSelected" />
+          <span v-else class="text-white">no animal selected</span>
         </MapDetailBox>
       </div>
-      <div class="w-1/3 ml-4">
-        <MapDetailBox title="weapons">
-          <div v-if="animalSelected">
-            <div
+      <div class="flex-row w-1/3 pl-4 ">
+        <MapDetailBox title="weapons" class="">
+          <span v-if="animalSelected" class="">
+            <span
               v-for="weapon in weaponsForAnimal"
               :key="weapon.id"
               @click="selectWeapon(weapon)"
@@ -52,13 +53,14 @@
               >
                 {{ weapon.name }}
               </p>
-            </div>
-          </div>
+            </span>
+          </span>
+          <span v-else>no animal selected</span>
         </MapDetailBox>
       </div>
-      <div class="w-1/3 pl-8 ml-4">
+      <div class="flex-row w-1/3 pl-8 ml-4">
         <MapDetailBox title="ammunition">
-          <div v-if="weaponSelected">
+          <span v-if="weaponSelected">
             <div v-for="ammo in ammunitionForWeapon" :key="ammo.id">
               <p
                 class="
@@ -71,33 +73,47 @@
                 {{ ammo.name }}
               </p>
             </div>
-          </div>
+          </span>
+          <span v-else>no weapon selected</span>
         </MapDetailBox>
         <MapDetailBox title="callers and scents" class="mt-16">
-          <div v-if="animalSelected">
-            <div v-for="scent in animalSelected.scents" :key="scent.id">
+          <span v-if="animalSelected">
+            <div v-if="animalSelected.callers.length">
+              <div v-for="caller in animalSelected.callers" :key="caller.id">
+                <p
+                  class="
+                    uppercase
+                    text-accent-orange
+                    font-extrabold
+                    hover:bg-accent-orange
+                  "
+                >
+                  {{ caller.name }}
+                </p>
+              </div>
+            </div>
+            <div v-else>
               <p
                 class="
-                  uppercase
-                  text-accent-orange
-                  font-extrabold
-                  hover:bg-accent-orange
-                "
+                    uppercase
+                    text-accent-orange
+                    font-extrabold
+                  "
               >
-                {{ scent.name }}
+                No caller or scent exists for {{ animalSelected.name }}.
               </p>
             </div>
-          </div>
+          </span>
+          <span v-else>no animal selected</span>
         </MapDetailBox>
       </div>
     </div>
 
-    <div
-      class="
+    <div class="mt-4 pb-12">
+      <div
+        class="
         uppercase
         text-accent-red
-        mt-4
-        pb-4
         text-center
         font-extrabold
         cursor-pointer
@@ -105,9 +121,10 @@
         text-2xl
         hover:text-accent-redSemi
       "
-      @click="$router.push('/')"
-    >
-      change reserve
+        @click="$router.push('/')"
+      >
+        change reserve
+      </div>
     </div>
   </div>
 </template>

@@ -1,13 +1,12 @@
 <template>
-  <div class="mx-2 p-12">
-    <div v-if="map">
-      <div class="text-center">
+  <div class="flex flex-col mt-6 w-screen min-h-screen">
+    <div v-if="map" class="text-center">
+      <div class="">
         <h1
           class="
             text-accent-orange
             font-extrabold
             uppercase
-            ml-20
             text-xl
             md:text-5xl
             shadow-sm
@@ -17,13 +16,11 @@
         </h1>
         <hr class="border-accent-orange border-0 border-b-2 w-4/6 mx-auto" />
       </div>
-      <MapDetail :map="map" />
+      <MapDetail :map="map" class="p-12 mt-12 pt-0 h-24" />
     </div>
-    <div v-else>
-      <LoadingSymbol
-        class="w-3/4 h-32 left-0 right-0 text-accent-orange ml-64"
-        size="2xl"
-      />
+    <div v-else class="w-screen text-center mt-6">
+      <LoadingSymbol class="w-3/4 h-32 text-accent-orange" size="2xl" />
+      <p class="mt-4">Loading map data..</p>
     </div>
   </div>
 </template>
