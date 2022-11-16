@@ -33,7 +33,7 @@
         <MapDetailBox title="weapons">
           <div v-if="animalSelected">
             <div
-              v-for="weapon in animalSelected.weapons"
+              v-for="weapon in weaponsForAnimal"
               :key="weapon.id"
               @click="selectWeapon(weapon)"
             >
@@ -59,7 +59,7 @@
       <div class="w-1/3 pl-8 ml-4">
         <MapDetailBox title="ammunition">
           <div v-if="weaponSelected">
-            <div v-for="ammo in weaponSelected.ammunition" :key="ammo.id">
+            <div v-for="ammo in ammunitionForWeapon" :key="ammo.id">
               <p
                 class="
                   uppercase
@@ -114,7 +114,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { Map, Animal, Weapon } from "@/types/application";
+import { Map, Animal, Weapon, Ammunition } from "@/types/application";
 import { application } from "@/store/application";
 import AnimalTrophyBox from "@/components/animal/AnimalTrophyBox.vue";
 import MapDetailBox from "@/components/map/MapDetailBox.vue";
@@ -126,6 +126,8 @@ export default class MapDetail extends Vue {
   @Prop({ required: true }) map!: Map;
   animalSelected: Animal | null = null;
   weaponSelected: Weapon | null = null;
+  weaponsForAnimal: Weapon[] = [];
+  ammunitionForWeapon: Ammunition[] = [];
 
   get animals(): Animal[] {
     return application.animals;
@@ -140,6 +142,7 @@ export default class MapDetail extends Vue {
 
   selectAnimal(animal: Animal) {
     this.animalSelected = animal;
+    this.setWeaponList(animal.weapons);
     this.$router
       .push({
         path: this.$route.fullPath,
@@ -152,6 +155,7 @@ export default class MapDetail extends Vue {
 
   selectWeapon(weapon: Weapon) {
     this.weaponSelected = weapon;
+    this.setAmmunitionList(weapon.ammunition);
     this.$router
       .push({
         path: this.$route.fullPath,
@@ -160,6 +164,18 @@ export default class MapDetail extends Vue {
       .catch(() => {
         return "";
       });
+  }
+
+  setWeaponList(weapons: Weapon[]) {
+    this.weaponsForAnimal = weapons.filter(w =>
+      w.classes.some(c => c === this.animalSelected?.class),
+    );
+  }
+
+  setAmmunitionList(ammunition: Ammunition[]) {
+    this.ammunitionForWeapon = ammunition.filter(a =>
+      a.classes.some(c => c === this.animalSelected?.class),
+    );
   }
 
   isSelectedAnimal(animal: Animal): boolean {

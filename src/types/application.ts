@@ -26,6 +26,7 @@ export interface AnimalRating {
 
 export interface Weapon {
   id: number;
+  classes: Animal["class"][];
   name: string;
   weaponNo: string;
   ammunition: Ammunition[];
@@ -33,6 +34,7 @@ export interface Weapon {
 
 export interface Ammunition {
   id: number;
+  classes: Animal["class"][];
   name: string;
   ammunitionNo: string;
 }
