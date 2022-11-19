@@ -31,9 +31,10 @@
           :key="map.id"
           class="
             w-1/6
-            transition-all
             cursor-pointer
-            hover:opacity-90
+            hover:bg-base-blackLight
+            shadow-2xl
+            drop-shadow-2xl
             object-contain
             mt-4
           "
