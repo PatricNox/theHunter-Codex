@@ -39,7 +39,9 @@
           "
           @click="selectMap(map.id)"
         >
-          <img :src="getMedia(map.mediaUrl)" width="120" class="bg-contain" />
+          <div class="abs-centered">
+            <img :src="getMedia(map.mediaUrl)" :alt="map.name" width="200" />
+          </div>
         </div>
       </div>
     </div>
@@ -68,3 +70,11 @@ export default class Index extends Vue {
   }
 }
 </script>
+<style scoped>
+.abs-centered {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
