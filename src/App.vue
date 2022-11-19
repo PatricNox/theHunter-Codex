@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <div class="absolute m-1 text-sm opacity-50">
+      build: {{ version }} (BETA)
+    </div>
     <router-view v-if="appIsReady" class="overflow-x-hidden" />
     <div v-else class="w-screen text-center mt-12">
       <LoadingSymbol class=" w-3/4 h-32 text-accent-orange" size="2xl" />
@@ -12,12 +15,17 @@
 import { Vue, Component } from "vue-property-decorator";
 import { Locale } from "@/i18n";
 import { application } from "@/store/application";
+import { version } from "../package.json";
 
 @Component({
   components: {},
 })
 export default class App extends Vue {
   appIsReady = false;
+
+  get version(): string | undefined {
+    return version;
+  }
 
   created() {
     this.setLocale();
