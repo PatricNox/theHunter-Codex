@@ -15,7 +15,7 @@
 import { Vue, Component } from "vue-property-decorator";
 import { Locale } from "@/i18n";
 import { application } from "@/store/application";
-import { version } from "../package.json";
+import packageInfo from "../package.json";
 
 @Component({
   components: {},
@@ -24,7 +24,7 @@ export default class App extends Vue {
   appIsReady = false;
 
   get version(): string | undefined {
-    return version;
+    return packageInfo.version;
   }
 
   created() {
