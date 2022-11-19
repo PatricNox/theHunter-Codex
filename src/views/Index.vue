@@ -30,8 +30,7 @@
           v-for="map in maps"
           :key="map.id"
           class="
-            w-1/3
-            lg:w-1/4
+            w-1/6
             cursor-pointer
             hover:bg-base-blackLight
             shadow-2xl
@@ -41,9 +40,7 @@
           "
           @click="selectMap(map.id)"
         >
-          <div class="">
-            <img :src="getMedia(map.mediaUrl)" class="bg-contain" />
-          </div>
+          <img :src="getMedia(map.mediaUrl)" class="bg-contain" />
         </div>
       </div>
     </div>
