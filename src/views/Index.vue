@@ -25,22 +25,21 @@
           "
         />
       </div>
-      <div class="flex flex-wrap mx-auto mt-12 lg:w-1/2">
+      <div class="flex flex-wrap mx-auto mt-12 w-3/4">
         <div
           v-for="map in maps"
           :key="map.id"
           class="
             w-1/6
             cursor-pointer
-            hover:bg-base-blackLight
-            shadow-2xl
-            drop-shadow-2xl
             object-contain
             mt-4
+            opacity-50
+            hover:opacity-100
           "
           @click="selectMap(map.id)"
         >
-          <img :src="getMedia(map.mediaUrl)" class="bg-contain" />
+          <img :src="getMedia(map.mediaUrl)" width="120" class="bg-contain" />
         </div>
       </div>
     </div>
